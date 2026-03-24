@@ -603,18 +603,7 @@ ranking = ranking.slice(0, 10);
 
 localStorage.setItem('stRanking', JSON.stringify(ranking));
         }
-        function getRequiredExp(level) {
-    const target = 4000;
-    const maxLevel = 100;
-
-    const base = 1.08; // 成長率（調整可）
-
-    const total = (Math.pow(base, maxLevel) - 1) / (base - 1);
-    const scale = target / total;
-
-    return scale * Math.pow(base, level);
-}
-
+        
         
         let buff = getBuffMultiplier();
 
@@ -631,6 +620,19 @@ if (mainCrown && crowns && crownImages[crowns.selected]) {
     mainCrown.src = crownImages[crowns.selected];
 }
     }
+
+    function getRequiredExp(level) {
+    const target = 4000;
+    const maxLevel = 100;
+
+    const base = 1.08; // 成長率（調整可）
+
+    const total = (Math.pow(base, maxLevel) - 1) / (base - 1);
+    const scale = target / total;
+
+    return scale * Math.pow(base, level);
+}
+
 
     function applyVisualRewards(level) {
         // Body クラスの切り替え
