@@ -80,6 +80,7 @@
     height: 100%;
     object-fit: cover;
 }
+        
 
         /* --- Visual Rewards (Crowns & Auras) --- */
         .crown-bronze { filter: sepia(1) hue-rotate(-50deg) saturate(3); font-size: 1.3rem; }
@@ -174,6 +175,14 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
+        #btn-crown-icon {
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
     </style>
 </head>
 <body>
@@ -228,7 +237,7 @@
     </div>
 
     <div id="display-area"><span id="result-text">Ready?</span></div>
-    <button class="gacha-btn" id="spin-button" onclick="spin()">タスクを決める！</button>
+    <button class="gacha-btn" id="spin-button" onclick="spin()">教科を決める！</button>
 
     <div id="timer-section">
         <div id="timer-display">00:00:00</div>
@@ -515,10 +524,12 @@ function getLevelData(exp) {
         let total = (parseFloat(localStorage.getItem('stTotalExp')) || 0) + sessionExp;
         let data = getLevelData(total);
         let level = data.level;
-        let unlockIndex = Math.floor(level / 10);
-
-if (!crowns.owned.includes(unlockIndex) && unlockIndex < crownImages.length) {
-    crowns.owned.push(unlockIndex);
+        for (let i = 0; i < crownImages.length; i++) {
+    if (level >= (i + 1) * 10 && !crowns.owned.includes(i)) {
+        crowns.owned.push(i);
+    }
+}
+localStorage.setItem('stCrowns', JSON.stringify(crowns));
     localStorage.setItem('stCrowns', JSON.stringify(crowns));
 }
         
@@ -575,7 +586,15 @@ localStorage.setItem('stRanking', JSON.stringify(ranking));
 
         // 王冠アイコンの更新
         const btnIcon = document.getElementById('btn-crown-icon');
-btnIcon.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:24px;">`;        btnIcon.className = "settings-btn";
+btnIcon.innerHTML = `
+    <img src="${crownImages[crowns.selected]}"
+    style="
+        width:32px;
+        height:32px;
+        object-fit:contain;
+        filter: drop-shadow(0 0 4px rgba(255,215,0,0.7));
+    ">
+`;        btnIcon.className = "settings-btn";
         if (level >= 100) btnIcon.classList.add("crown-god");
         else if (level >= 90) btnIcon.classList.add("crown-gold");
         else if (level >= 60) btnIcon.classList.add("crown-silver");
@@ -1028,7 +1047,12 @@ function renderUserIcon() {
             localStorage.removeItem('stConsecutiveDays');
             localStorage.removeItem('stLastRunDate');
             location.reload();
-        }
+        },
+        window.debugSetLevel = function(lv) {
+    let fakeExp = requiredTotalExp(lv);
+    localStorage.setItem('stTotalExp', fakeExp);
+    updateExpVisuals(true);
+}
     };
 </script>
 </body>
