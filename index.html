@@ -416,6 +416,34 @@ body.god-mode #main-crown img {
 
 <script>
 
+function updateCrownDisplay() {
+    const btn = document.getElementById('btn-crown-icon');
+    btn.innerHTML = `
+        <img src="${crownImages[crowns.selected]}"
+        style="width:32px;height:32px;object-fit:contain;">
+    `;
+}
+
+function openModal(id) { 
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'flex';
+
+    if (id === 'settings-modal') {
+        renderHistory();
+        renderRanking();
+    }
+
+    if (id === 'status-modal') {
+        renderStatusModal();
+    }
+}
+
+function closeModal(e, id) { 
+    if(e.target.id === id) {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+    
 function unlockCrowns(level) {
 }
 function openModal(id) { 
@@ -1032,20 +1060,6 @@ sc.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:40px; he
     }
     
 
-function updateCrownDisplay() {
-    const btn = document.getElementById('btn-crown-icon');
-btn.innerHTML = `
-    <img src="${crownImages[crowns.selected]}"
-    style="
-        width:32px;
-        height:32px;
-        object-fit:contain;
-    ">
-`;
-}
-
-    
-    function closeModal(e, id) { if(e.target.id === id) document.getElementById(id).style.display = 'none'; }
 
     // 初期化処理
     loadSettings(); 
