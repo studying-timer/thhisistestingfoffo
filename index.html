@@ -524,6 +524,15 @@ function getLevelData(exp) {
         let total = (parseFloat(localStorage.getItem('stTotalExp')) || 0) + sessionExp;
         let data = getLevelData(total);
         let level = data.level;
+
+// 🔥 ここ修正
+crowns.owned = [];
+
+for (let i = 0; i < crownImages.length; i++) {
+    if (level >= (i + 1) * 10) {
+        crowns.owned.push(i);
+    }
+}
         
 localStorage.setItem('stCrowns', JSON.stringify(crowns));
         
