@@ -978,31 +978,22 @@ function loadTemplate(name) {
         let title = "努力の卵";
         let crownIcon = "👑", crownClass = "";
 
-        if (data.level >= 100) { title = "時を統べる神"; crownIcon = "👑✨"; crownClass = "crown-god"; }
-        else if (data.level >= 90) { title = "伝説の集中力"; crownClass = "crown-gold"; }
-        else if (data.level >= 60) { title = "時間の支配者"; crownClass = "crown-silver"; }
-        else if (data.level >= 30) { title = "継続の達人"; crownClass = "crown-bronze"; }
-        else if (data.level >= 10) { title = "習慣化の始まり"; crownIcon = "🏆"; }
-        else { crownIcon = "🏆"; }
+        let title = "";
+let crownIcon = "";
 
-        document.getElementById('status-title').innerText = title;
-        let sc = document.getElementById('status-crown');
-        sc.innerText = crownIcon; sc.className = crownClass;
+// タイトルだけ残す（OK）
+if (data.level >= 100) { title = "時を統べる神"; }
+else if (data.level >= 90) { title = "伝説の集中力"; }
+else if (data.level >= 60) { title = "時間の支配者"; }
+else if (data.level >= 30) { title = "継続の達人"; }
+else if (data.level >= 10) { title = "習慣化の始まり"; }
+else { title = "見習い"; }
 
-        let p = "";
-        if (data.level >= 10) p += "<li>[Lv.10] ゲージ発光 / パステルテーマ解放</li>";
-        if (data.level >= 20) p += "<li>[Lv.20] タイマー・グロー効果</li>";
-        if (data.level >= 30) p += "<li>[Lv.30] 王冠進化: ブロンズ・リーフ</li>";
-        if (data.level >= 40) p += "<li>[Lv.40] サイバーテーマ解放</li>";
-        if (data.level >= 50) p += "<li>[Lv.50] 画面パーティクル効果</li>";
-        if (data.level >= 60) p += "<li>[Lv.60] 王冠進化: シルバー・オーラ</li>";
-        if (data.level >= 70) p += "<li>[Lv.70] ロイヤルテーマ解放</li>";
-        if (data.level >= 80) p += "<li>[Lv.80] 星空オーラ背景</li>";
-        if (data.level >= 90) p += "<li>[Lv.90] クリスタル・フォント / ジュエル王冠</li>";
-        if (data.level >= 100) p += "<li>[Lv.100] ゴッド・モード / テーマ完全解放</li>";
-        if (!p) p = "<li>まだ特典はありません。レベルを上げましょう！</li>";
-        document.getElementById('status-perks').innerHTML = p;
-    }
+document.getElementById('status-title').innerText = title;
+
+// 👇 ここが重要（画像に変更）
+let sc = document.getElementById('status-crown');
+sc.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:40px; height:40px;">`;
 
     function shareOnSNS() {
         const min = Math.floor(selectedSeconds / 60);
