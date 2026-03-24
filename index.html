@@ -1014,11 +1014,6 @@ sc.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:40px; he
         } catch(e) {}
     }
     function unlockCrowns(level) {
-    let unlockIndex = Math.floor((level - 1) / 10);
-    if (!crowns.owned.includes(unlockIndex) && unlockIndex < 10) {
-        crowns.owned.push(unlockIndex);
-        localStorage.setItem('stCrowns', JSON.stringify(crowns));
-    }
 }
 
 function updateCrownDisplay() {
@@ -1034,11 +1029,18 @@ btn.innerHTML = `
 }
 
     function openModal(id) { 
-        document.getElementById(id).style.display = 'flex'; 
-        if(id==='settings-modal') renderHistory(); 
-        if(id==='status-modal') renderStatusModal();
-        if(id==='settings-modal') renderRanking();
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'flex';
+
+    if (id === 'settings-modal') {
+        renderHistory();
+        renderRanking();
     }
+
+    if (id === 'status-modal') {
+        renderStatusModal();
+    }
+}
     function closeModal(e, id) { if(e.target.id === id) document.getElementById(id).style.display = 'none'; }
 
     // 初期化処理
