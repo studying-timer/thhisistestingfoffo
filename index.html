@@ -524,11 +524,7 @@ function getLevelData(exp) {
         let total = (parseFloat(localStorage.getItem('stTotalExp')) || 0) + sessionExp;
         let data = getLevelData(total);
         let level = data.level;
-        for (let i = 0; i < crownImages.length; i++) {
-    if (level >= (i + 1) * 10 && !crowns.owned.includes(i)) {
-        crowns.owned.push(i);
-    }
-}
+        
 localStorage.setItem('stCrowns', JSON.stringify(crowns));
         
         if (save && sessionExp > 0) {
@@ -964,7 +960,7 @@ function loadTemplate(name) {
         } catch(e) {}
     }
     function unlockCrowns(level) {
-    let unlockIndex = Math.floor(level / 10);
+    let unlockIndex = Math.floor((level - 1) / 10);
     if (!crowns.owned.includes(unlockIndex) && unlockIndex < 10) {
         crowns.owned.push(unlockIndex);
         localStorage.setItem('stCrowns', JSON.stringify(crowns));
@@ -973,7 +969,14 @@ function loadTemplate(name) {
 
 function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
-    btn.innerHTML = `<img src="${crownImages[crowns.selected]}" width="24">`;
+btn.innerHTML = `
+    <img src="${crownImages[crowns.selected]}"
+    style="
+        width:32px;
+        height:32px;
+        object-fit:contain;
+    ">
+`;
 }
 
     function openModal(id) { 
