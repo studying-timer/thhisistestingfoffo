@@ -1043,12 +1043,12 @@ function renderUserIcon() {
             updateExpVisuals(false);
             console.log(`[DEV] Consecutive Days set to ${days}`);
         },
-        reset: function() {
-            localStorage.removeItem('stTotalExp');
-            localStorage.removeItem('stConsecutiveDays');
-            localStorage.removeItem('stLastRunDate');
-            location.reload();
-        },
+        function reset() {
+    localStorage.removeItem('stTotalExp');
+    localStorage.removeItem('stConsecutiveDays');
+    localStorage.removeItem('stLastRunDate');
+    location.reload();
+}
         window.debugSetLevel = function(lv) {
     let fakeExp = requiredTotalExp(lv);
     localStorage.setItem('stTotalExp', fakeExp);
