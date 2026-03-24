@@ -864,6 +864,27 @@ function loadTemplate(name) {
         document.getElementById('status-skip').innerText = recoveryTickets + "枚";
         document.getElementById('crown-select').innerHTML =
     crowns.owned.map(i => `
+        <div style="
+            display:inline-block;
+            margin:6px;
+            padding:6px;
+            border-radius:10px;
+            background:${crowns.selected === i ? 'rgba(255,215,0,0.2)' : 'transparent'};
+            border:${crowns.selected === i ? '2px solid gold' : '1px solid #555'};
+            transition:0.2s;
+        ">
+            <img src="${crownImages[i]}"
+                style="
+                    width:48px;
+                    height:48px;
+                    object-fit:contain;
+                    cursor:pointer;
+                    filter:${crowns.selected === i ? 'drop-shadow(0 0 8px gold)' : 'none'};
+                "
+                onclick="selectCrown(${i})">
+        </div>
+    `).join('');
+    crowns.owned.map(i => `
         <img src="${crownImages[i]}" style="width:40px; cursor:pointer;"
         onclick="selectCrown(${i})">
     `).join('');
