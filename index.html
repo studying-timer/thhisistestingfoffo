@@ -415,6 +415,23 @@ body.god-mode #main-crown img {
 </div>
 
 <script>
+
+function unlockCrowns(level) {
+}
+function openModal(id) { 
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'flex';
+
+    if (id === 'settings-modal') {
+        renderHistory();
+        renderRanking();
+    }
+
+    if (id === 'status-modal') {
+        renderStatusModal();
+    }
+}
+    
     /* --- グローバル変数 --- */
     let selectedSeconds = 300, timerInterval = null, remainingTime = 0;
     let currentTaskObj = { name: "Ready?", color: "#39ff14", shared: false };
@@ -1013,8 +1030,7 @@ sc.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:40px; he
             osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + dur);
         } catch(e) {}
     }
-    function unlockCrowns(level) {
-}
+    
 
 function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
@@ -1028,19 +1044,7 @@ btn.innerHTML = `
 `;
 }
 
-    function openModal(id) { 
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'flex';
-
-    if (id === 'settings-modal') {
-        renderHistory();
-        renderRanking();
-    }
-
-    if (id === 'status-modal') {
-        renderStatusModal();
-    }
-}
+    
     function closeModal(e, id) { if(e.target.id === id) document.getElementById(id).style.display = 'none'; }
 
     // 初期化処理
