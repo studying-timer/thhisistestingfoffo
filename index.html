@@ -999,7 +999,6 @@ if (savedIcon) {
     document.getElementById('user-icon').style.display = 'block';
     document.getElementById('default-user-icon').style.display = 'none';
 }
-    renderUserIcon();
 
     function setHeaderImage(file) {
     const reader = new FileReader();
@@ -1024,6 +1023,8 @@ function renderUserIcon() {
         def.style.display = 'block';
     }
 }
+        renderUserIcon();
+
     /* --- 開発者用 デバッグコマンド --- */
     window.dev = {
         setLevel: function(targetLvl) {
@@ -1043,18 +1044,19 @@ function renderUserIcon() {
             updateExpVisuals(false);
             console.log(`[DEV] Consecutive Days set to ${days}`);
         },
-        function reset() {
+        reset: function()
     localStorage.removeItem('stTotalExp');
     localStorage.removeItem('stConsecutiveDays');
     localStorage.removeItem('stLastRunDate');
     location.reload();
 }
-        window.debugSetLevel = function(lv) {
+        
+    };
+    window.debugSetLevel = function(lv) {
     let fakeExp = requiredTotalExp(lv);
     localStorage.setItem('stTotalExp', fakeExp);
     updateExpVisuals(true);
-}
-    };
+};
 </script>
 </body>
 </html>
