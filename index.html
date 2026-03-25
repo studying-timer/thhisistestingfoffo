@@ -228,6 +228,13 @@ body.god-mode #main-crown img {
     from { filter: drop-shadow(0 0 5px gold); }
     to   { filter: drop-shadow(0 0 20px gold); }
 }
+        #crown-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+        
     </style>
 </head>
 <body>
@@ -420,8 +427,8 @@ function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
     if (!btn) return;
 
-    btn.innerHTML = `
-        <img src="${crownImages[crowns.selected]}"
+    btn.innerHTML = `<img src="crown.png">`; `
+      
         style="
             width:28px;
             height:28px;
