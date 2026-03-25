@@ -18,6 +18,32 @@
 
     <style>
 
+#crown-select {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+    justify-items: center;
+}
+
+.crown-box {
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    transition: 0.2s;
+}
+
+.crown-box.active {
+    border: 2px solid gold;
+    background: rgba(255,215,0,0.2);
+}
+
+.crown-box img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    cursor: pointer;
+}
+        
 .top-buttons {
     position: fixed;
     top: 10px;
@@ -432,6 +458,7 @@ body.god-mode #main-crown img {
 
 <script>
 
+    
 function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
     if (!btn) return;
@@ -446,18 +473,30 @@ function updateCrownDisplay() {
     `;
 }
 
+function updateStatusCrown() {
+    const el = document.getElementById('status-crown');
+
+    if (!el || !crowns || !crownImages[crowns.selected]) return;
+
+    el.innerHTML = `
+        <img src="${crownImages[crowns.selected]}"
+        style="
+            width:60px;
+            height:60px;
+            object-fit:contain;
+        ">
+    `;
+}
+    
 function openModal(id) { 
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'flex';
+    document.getElementById(id).style.display = 'flex'; 
 
-    if (id === 'settings-modal') {
-        renderHistory();
-        renderRanking();
-    }
-
-    if (id === 'status-modal') {
+    if(id==='settings-modal') renderHistory(); 
+    if(id==='status-modal') {
         renderStatusModal();
+        updateStatusCrown(); ← ここに追加
     }
+    if(id==='settings-modal') renderRanking();
 }
 
 function closeModal(e, id) { 
@@ -996,28 +1035,7 @@ function loadTemplate(name) {
         document.getElementById('status-buff-display').innerText = "x" + buff.toFixed(2);
         document.getElementById('status-days').innerText = days + "日";
         document.getElementById('status-skip').innerText = recoveryTickets + "枚";
-        document.getElementById('crown-select').innerHTML =
-    crowns.owned.map(i => `
-        <div style="
-            display:inline-block;
-            margin:6px;
-            padding:6px;
-            border-radius:10px;
-            background:${crowns.selected === i ? 'rgba(255,215,0,0.2)' : 'transparent'};
-            border:${crowns.selected === i ? '2px solid gold' : '1px solid #555'};
-            transition:0.2s;
-        ">
-            <img src="${crownImages[i]}"
-                style="
-                    width:48px;
-                    height:48px;
-                    object-fit:contain;
-                    cursor:pointer;
-                    filter:${crowns.selected === i ? 'drop-shadow(0 0 8px gold)' : 'none'};
-                "
-                onclick="selectCrown(${i})">
-        </div>
-    `).join('');
+       document.getElementById('crown-select').innerHTML =
     crowns.owned.map(i => `
         <img src="${crownImages[i]}" style="width:40px; cursor:pointer;"
         onclick="selectCrown(${i})">
@@ -1027,6 +1045,7 @@ function loadTemplate(name) {
     crowns.selected = i;
     localStorage.setItem('stCrowns', JSON.stringify(crowns));
     location.reload();
+        
 }
         
         let h = Math.floor(totalExp / 60);
@@ -1048,6 +1067,18 @@ else if (data.level >= 10) { title = "習慣化の始まり"; }
 else { title = "見習い"; }
 
 document.getElementById('status-title').innerText = title;
+        const sc = document.getElementById('status-crown');
+
+if (sc && crownImages[crowns.selected]) {
+    sc.innerHTML = `
+        <img src="${crownImages[crowns.selected]}"
+        style="
+            width:60px;
+            height:60px;
+            object-fit:contain;
+        ">
+    `;
+}
 
 // 👇 ここが重要（画像に変更）
 let sc = document.getElementById('status-crown');
@@ -1138,6 +1169,8 @@ function renderUserIcon() {
 }
         
     };
+
+        
         window.onload = function() {
     updateCrownDisplay();
 };
