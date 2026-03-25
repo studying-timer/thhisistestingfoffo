@@ -692,28 +692,24 @@ if (mainCrown && crowns && crownImages[crowns.selected]) {
 }
 
 
-    function applyVisualRewards(level) {
-        // Body クラスの切り替え
-        document.body.classList.toggle('aura-particles', level >= 50);
-        document.body.classList.toggle('aura-stars', level >= 80);
-        document.body.classList.toggle('crystal-font', level >= 90);
-        document.body.classList.toggle('god-mode', level >= 100);
+   function applyVisualRewards(level) {
+    // Body クラスの切り替え
+    document.body.classList.toggle('aura-particles', level >= 50);
+    document.body.classList.toggle('aura-stars', level >= 80);
+    document.body.classList.toggle('crystal-font', level >= 90);
+    document.body.classList.toggle('god-mode', level >= 100);
 
-        // 王冠アイコンの更新
-        const btnIcon = document.getElementById('btn-crown-icon');
-    <img src="${crownImages[crowns.selected]}"
-    style="
-        width:32px;
-        height:32px;
-        object-fit:contain;
-        filter: drop-shadow(0 0 4px rgba(255,215,0,0.7));
-    ">
-`;        btnIcon.className = "settings-btn";
-        if (level >= 100) btnIcon.classList.add("crown-god");
-        else if (level >= 90) btnIcon.classList.add("crown-gold");
-        else if (level >= 60) btnIcon.classList.add("crown-silver");
-        else if (level >= 30) btnIcon.classList.add("crown-bronze");
-    }
+    // 王冠スタイルだけ変更（画像は触らない！）
+    const btnIcon = document.getElementById('btn-crown-icon');
+    if (!btnIcon) return;
+
+    btnIcon.className = "settings-btn";
+
+    if (level >= 100) btnIcon.classList.add("crown-god");
+    else if (level >= 90) btnIcon.classList.add("crown-gold");
+    else if (level >= 60) btnIcon.classList.add("crown-silver");
+    else if (level >= 30) btnIcon.classList.add("crown-bronze");
+}
 
     /* --- 設定・テーマ・UI --- */
     function loadSettings() {
@@ -1050,7 +1046,6 @@ document.getElementById('status-title').innerText = title;
 
 // 👇 ここが重要（画像に変更）
 let sc = document.getElementById('status-crown');
-sc.innerHTML = `<img src="${crownImages[crowns.selected]}" style="width:40px; height:40px;">`;
 
     function shareOnSNS() {
         const min = Math.floor(selectedSeconds / 60);
