@@ -198,16 +198,7 @@
     height: 100%;
     object-fit: contain;
 }
-        #main-crown {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-}
-
-#main-crown img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+   
     
     /* ✨エフェクト */
     filter: drop-shadow(0 0 6px gold);
@@ -259,9 +250,6 @@ body.god-mode #main-crown img {
     </div>
 
     <div class="level-stats">
-        <div id="main-crown">
-        <img id="main-crown-img" src="">
-    </div>
         <span style="color:var(--sub);">Lv.<span id="main-lv">1</span></span>
         <span style="color:var(--accent);">Buff x<span id="main-buff">1.00</span></span>
     </div>
@@ -427,8 +415,8 @@ function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
     if (!btn) return;
 
-    btn.innerHTML = `<img src="crown.png">`; `
-      
+    btn.innerHTML = `
+        <img src="${crownImages[crowns.selected]}"
         style="
             width:28px;
             height:28px;
@@ -673,10 +661,6 @@ localStorage.setItem('stRanking', JSON.stringify(ranking));
         unlockCrowns(data.level);
         updateCrownDisplay();
         updateThemeSelect(data.level);
-        const mainCrown = document.getElementById("main-crown-img");
-if (mainCrown && crowns && crownImages[crowns.selected]) {
-    mainCrown.src = crownImages[crowns.selected];
-}
     }
 
     function getRequiredExp(level) {
