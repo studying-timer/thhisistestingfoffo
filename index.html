@@ -489,25 +489,6 @@ function updateStatusCrown() {
 }
     
 function openModal(id) { 
-    document.getElementById(id).style.display = 'flex'; 
-
-    if(id==='settings-modal') renderHistory(); 
-    if(id==='status-modal') {
-        renderStatusModal();
-        updateStatusCrown(); ← ここに追加
-    }
-    if(id==='settings-modal') renderRanking();
-}
-
-function closeModal(e, id) { 
-    if(e.target.id === id) {
-        document.getElementById(id).style.display = 'none';
-    }
-}
-    
-function unlockCrowns(level) {
-}
-function openModal(id) { 
     const el = document.getElementById(id);
     if (el) el.style.display = 'flex';
 
@@ -518,7 +499,17 @@ function openModal(id) {
 
     if (id === 'status-modal') {
         renderStatusModal();
+        updateStatusCrown(); // ← 修正済み
     }
+}
+
+function closeModal(e, id) { 
+    if(e.target.id === id) {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+    
+function unlockCrowns(level) {
 }
     
     /* --- グローバル変数 --- */
