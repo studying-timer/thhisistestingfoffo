@@ -17,6 +17,27 @@
     </script>
 
     <style>
+
+.top-buttons {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 9999; /* 他より前に出す */
+}
+
+#btn-crown-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #222;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+        
         :root {
             --bg: #050505;
             --accent: #ff007b;
@@ -230,6 +251,12 @@ body.god-mode #main-crown img {
 </head>
 <body>
 
+<div class="top-buttons">
+    <button id="btn-crown-icon"></button>
+    <button class="settings-btn">●</button>
+    <button class="settings-btn">●</button>
+</div>
+    
 <div class="container">
     
     <div class="header-area">
@@ -418,8 +445,8 @@ function updateCrownDisplay() {
     btn.innerHTML = `
         <img src="${crownImages[crowns.selected]}"
         style="
-            width:28px;
-            height:28px;
+            width:24px;
+            height:24px;
             object-fit:contain;
         ">
     `;
@@ -1117,6 +1144,9 @@ function renderUserIcon() {
 }
         
     };
+        window.onload = function() {
+    updateCrownDisplay();
+};
     window.debugSetLevel = function(lv) {
     let fakeExp = requiredTotalExp(lv);
     localStorage.setItem('stTotalExp', fakeExp);
