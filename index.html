@@ -1058,8 +1058,9 @@ else if (data.level >= 10) { title = "習慣化の始まり"; }
 else { title = "見習い"; }
 
 document.getElementById('status-title').innerText = title;
-        const sc = document.getElementById('status-crown');
-
+        
+const sc = document.getElementById('status-crown');
+        
 if (sc && crownImages[crowns.selected]) {
     sc.innerHTML = `
         <img src="${crownImages[crowns.selected]}"
@@ -1071,8 +1072,6 @@ if (sc && crownImages[crowns.selected]) {
     `;
 }
 
-// 👇 ここが重要（画像に変更）
-let sc = document.getElementById('status-crown');
 
     function shareOnSNS() {
         const min = Math.floor(selectedSeconds / 60);
