@@ -418,9 +418,15 @@ body.god-mode #main-crown img {
 
 function updateCrownDisplay() {
     const btn = document.getElementById('btn-crown-icon');
+    if (!btn) return;
+
     btn.innerHTML = `
         <img src="${crownImages[crowns.selected]}"
-        style="width:32px;height:32px;object-fit:contain;">
+        style="
+            width:28px;
+            height:28px;
+            object-fit:contain;
+        ">
     `;
 }
 
@@ -688,7 +694,6 @@ if (mainCrown && crowns && crownImages[crowns.selected]) {
 
         // 王冠アイコンの更新
         const btnIcon = document.getElementById('btn-crown-icon');
-btnIcon.innerHTML = `
     <img src="${crownImages[crowns.selected]}"
     style="
         width:32px;
