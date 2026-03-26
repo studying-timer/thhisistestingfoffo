@@ -54,11 +54,11 @@
 }
 
 #btn-crown-icon {
+    background: rgba(128, 128, 128, 0.1); /* ← settings-btnと同じ */
+    border: 1px solid var(--sub);
+    border-radius: 50%;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background: #222;
-    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -464,13 +464,13 @@ function updateCrownDisplay() {
     if (!btn) return;
 
     btn.innerHTML = `
-        <img src="${crownImages[crowns.selected]}"
-        style="
-            width:24px;
-            height:24px;
-            object-fit:contain;
-        ">
-    `;
+    <img src="${crownImages[crowns.selected]}"
+    style="
+        width:22px;
+        height:22px;
+        object-fit:contain;
+    ">
+`;
 }
 
 function updateStatusCrown() {
@@ -1002,14 +1002,24 @@ function loadTemplate(name) {
             </div>`).join('') || "履歴はありません";
     }
     function renderRanking() {
-    let ranking = JSON.parse(localStorage.getItem('stRanking')) || [];
+  const list = document.getElementById("rankingList");
 
-    document.getElementById('ranking-list').innerHTML = ranking.map((r,i) => `
-        <div style="display:flex; justify-content:space-between; padding:5px;">
-            <span>${i+1}位 ${r.name}</span>
-            <span>${Math.floor(r.exp)}分</span>
-        </div>
-    `).join('') || "まだ記録なし";
+  // ▼ ここでデータ取得
+  let data = JSON.parse(localStorage.getItem("ranking") || "[]");
+
+  // 🔧 表示時にフィルター（←ここ！！！）
+  data = data.filter(item => item.name && item.time);
+
+  // ▼ ソート
+  data.sort((a, b) => b.time - a.time);
+
+  // ▼ 表示
+  list.innerHTML = "";
+  data.forEach((item, i) => {
+    list.innerHTML += `
+      <li>${i + 1}位：${item.name} - ${item.time}分</li>
+    `;
+  });
 }
     function deleteHistory(e, i) { e.stopPropagation(); let h = JSON.parse(localStorage.getItem('arHistory')); h.splice(i, 1); localStorage.setItem('arHistory', JSON.stringify(h)); renderHistory(); }
     function applyHistory(task, sec, color) { document.getElementById('settings-modal').style.display = 'none'; currentTaskObj = { name: task, color: color, shared: false }; selectedSeconds = sec; remainingTime = sec; isHistoryRecorded = true; document.documentElement.style.setProperty('--timer-color', color); document.getElementById('result-text').innerHTML = `<span style="font-size:0.8rem; opacity:0.6;">履歴から復元</span><br>⭐ ${currentTaskObj.name} ⭐`; let label = sec < 60 ? sec+"秒" : (sec < 3600 ? (sec/60)+"分" : (sec/3600)+"時間"); document.getElementById('selected-time-display').innerText = `設定時間: ${label}`; updateTimerDisplay(); document.getElementById('timer-section').style.display = 'block'; }
