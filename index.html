@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<title>勉強タイマー｜集中力アップ・記録付き学習タイマー</title>
-
-<meta name="description" content="勉強時間を記録しながら集中できる無料タイマー。ポモドーロ対応、レベル・実績機能付きでモチベーションUP。スマホ・PC対応。">
-
-<meta name="keywords" content="勉強タイマー, 学習タイマー, ポモドーロ, 勉強時間 記録, 集中 アプリ">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- OGP（SNS対策） -->
-<meta property="og:title" content="勉強タイマー｜レベル・実績付き">
-<meta property="og:description" content="使うほどレベルが上がる新しい勉強タイマー">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://あなたのURL">
-<meta property="og:image" content="https://あなたのURL/ogp.png">
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5271787068763887"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Studying Timer</title>
 
-    <link rel="manifest" href="manifest.json">
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('Service Worker Registered'))
-                .catch(err => console.log('Service Worker Failed', err));
-        }
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-6F5312PB3E');
+</script>
+    
+   <title>集中力を高める学習タイマー | Studying Timer - 効率的な勉強時間を管理</title>
+
+<meta name="description" content="学習効率を最大化するためのシンプルで使いやすいタイマーです。連続使用日数の記録機能でモチベーションを維持し、あなたの勉強習慣をサポートします。">
+
+<meta property="og:title" content="Studying Timer - 学習効率を最大化するタイマー">
+<meta property="og:description" content="勉強時間を記録し、習慣化をサポートする無料の学習ツールです。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://studying-timer.github.io/"> <link rel="canonical" href="https://studying-timer.github.io//">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Studying Timer",
+  "description": "学習効率を最大化するためのタイマーアプリ",
+  "operatingSystem": "All",
+  "applicationCategory": "EducationalApplication"
+}
+</script>
+
 
     <style>
 
@@ -111,17 +115,27 @@
     background: radial-gradient(circle at top, #1a2a6a, #0a0f2a);
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg); color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             background-image: var(--bg-pattern); background-size: var(--bg-size); background-position: var(--bg-pos);
-            margin: 0; display: flex; justify-content: center;
-            min-height: 100vh; padding: 20px; box-sizing: border-box;
+            margin: 0;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+            min-height: 100vh; padding: 0px; box-sizing: border-box;
             transition: background-color 0.4s ease, color 0.4s ease;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .container { width: 100%; max-width: 500px; text-align: center; position: relative; z-index: 10; }
+        .container { width: 100%; max-width: 500px; margin: 0 auto; padding: 20px; text-align: center; position: relative; z-index: 10; box-sizing: border-box;}
 
         .header-area { display: flex; align-items: center; justify-content: space-between; position: relative; width: 100%; margin-bottom: 10px; padding-top: 10px; }
         
@@ -262,7 +276,8 @@
 }
    
     
-    /* ✨エフェクト */
+    /* ✨メイン王冠エフェクト */
+#main-crown img {
     filter: drop-shadow(0 0 6px gold);
     transition: transform 0.3s;
 }
@@ -286,6 +301,46 @@ body.god-mode #main-crown img {
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     justify-items: center;
+}
+
+html, body {
+    overflow-x: hidden;
+}       
+input, button {
+    max-width: 100%;
+}
+
+a {
+    color: var(--sub);
+    text-decoration: underline;
+}
+
+body.light-mode a {
+    color: #0077cc;
+}
+
+body:not(.light-mode) a {
+    color: #00f2ff;
+}
+a:hover {
+    opacity: 0.8;
+}
+{
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    overflow-x: hidden;
 }
         
     </style>
@@ -373,6 +428,31 @@ body.god-mode #main-crown img {
         </div>
     </div>
 
+<section style="margin-top:30px; text-align:left;">
+
+<h2 style="color:var(--sub); margin-bottom:10px;">
+📚 勉強ガイド
+</h2>
+
+<p style="font-size:0.9rem; opacity:0.8;">
+勉強効率を上げたい方へ。集中力アップや習慣化のコツを解説しています。
+</p>
+
+<ul style="line-height:1.8; padding-left:15px;">
+
+<li><a href="article2.html">「教えること」で完成する、アウトプット中心の学習法</a></li>
+<li><a href="article7.html">英語学習の本質：音読がもたらす「英語脳」の形成</a></li>
+<li><a href="article10.html">学びの本質：なぜ勉強するのか？「自由」と「選択肢」のために</a></li>
+<li><a href="article11.html">大学受験英語：基礎確立から長文読解へのステップアップ</a></li>
+<li><a href="article12.html">大学受験国語：現代文・古文・漢文の三位一体攻略</a></li>
+<li><a href="article13.html">大学受験理科：現象の深い理解と論理的帰結の構築</a></li>
+<li><a href="article14.html">大学受験社会：歴史の因果関係と地理の系統的理解</a></li>
+<li><a href="article15.html">大学受験英語：リスニングと英作文の戦略的攻略</a></li>
+
+</ul>
+
+</section>
+    
     <div class="footer-links">
         <a href="about.html">サイトについて</a> |
         <a href="how-to-use.html">使い方</a> |
@@ -526,12 +606,12 @@ function closeModal(e, id) {
     
 function unlockCrowns(level) {
 }
-    
     /* --- グローバル変数 --- */
     let selectedSeconds = 300, timerInterval = null, remainingTime = 0;
     let currentTaskObj = { name: "Ready?", color: "#39ff14", shared: false };
     let alarmIntervalId = null, isHistoryRecorded = false;
     let sessionExp = 0; // 今回のタイマーで稼いだ経験値（分数）
+    let currentSubjectSessionMin = 0; // 今回のセッションで計測中の教科別時間
     let recoveryTickets = parseInt(localStorage.getItem('stRecoveryTickets')) || 0;
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -686,7 +766,15 @@ function getLevelData(exp) {
         let level = data.level;
 
 // 🔥 ここ修正
-crowns.owned = [];
+let newOwned = [];
+
+for (let i = 0; i < crownImages.length; i++) {
+    if (level >= (i + 1) * 10) {
+        newOwned.push(i);
+    }
+}
+
+crowns.owned = newOwned;
 
 for (let i = 0; i < crownImages.length; i++) {
     if (level >= (i + 1) * 10) {
@@ -697,6 +785,13 @@ for (let i = 0; i < crownImages.length; i++) {
 localStorage.setItem('stCrowns', JSON.stringify(crowns));
         
         if (save && sessionExp > 0) {
+            let subjectTimes = JSON.parse(localStorage.getItem('stSubjectTimes')) || {};
+            let taskName = currentTaskObj.name;
+            if (taskName !== "Ready?" && taskName !== "休憩") {
+                subjectTimes[taskName] = (subjectTimes[taskName] || 0) + currentSubjectSessionMin;
+                localStorage.setItem('stSubjectTimes', JSON.stringify(subjectTimes));
+            }
+            currentSubjectSessionMin = 0;
             localStorage.setItem('stTotalExp', total);
             sessionExp = 0;
             // ランキング用保存
@@ -908,6 +1003,7 @@ document.getElementById('result-text').innerText =
             // 経験値を加算 (1秒あたり 1/60分 * 倍率)
             if (currentTaskObj.name !== "Ready?" && currentTaskObj.name !== "休憩") {
                 sessionExp += (1 / 60) * buff;
+                currentSubjectSessionMin += (1 / 60) * buff; // 教科別の時間も加算
                 updateExpVisuals(false);
             }
             
@@ -979,7 +1075,18 @@ function updateTaskColor(i, color) {
     document.documentElement.style.setProperty('--timer-color', currentTaskObj.color);
 }    function addTask() { const val = document.getElementById('new-task').value.trim(); const col = document.getElementById('new-task-color').value; if (val) { tasks.push({name: val, color: col, shared: false}); document.getElementById('new-task').value = ''; updateListDisplay(); } }
     function deleteTask(i) { tasks.splice(i, 1); updateListDisplay(); }
-    function resetDefault() { if(confirm("初期化しますか？")) { tasks = [ {name: "読書する", color: "#39ff14"}, {name: "歩く", color: "#39ff14"}, {name: "運動する", color: "#ff4444"}, {name: "勉強する", color: "#4444ff"}, {name: "仕事する", color: "#39ff14"}, {name: "ゲームする", color: "#39ff14"}, {name: "掃除する", color: "#39ff14"} ]; updateListDisplay(); } }
+    function resetDefault() {
+    if(confirm("科目を初期状態（国語・数学・英語・理科・社会）に戻しますか？")) {
+        tasks = [
+            {name:"国語", color:"#ff6666"},
+            {name:"数学", color:"#6666ff"},
+            {name:"英語", color:"#66ff66"},
+            {name:"理科", color:"#ffff66"},
+            {name:"社会", color:"#ff66ff"}
+        ];
+        updateListDisplay();
+    }
+}
     
     function updateTemplateDisplay() {
         const html = Object.keys(templates).map(key => `<div class="template-item"><span style="font-weight:bold; cursor:pointer;" onclick="loadTemplate('${key}')">${key}</span><span class="delete-btn" style="font-size:0.8rem;" onclick="deleteTemplate('${key}')">削除</span></div>`).join('');
@@ -1016,25 +1123,20 @@ function loadTemplate(name) {
                 <div class="delete-history" onclick="deleteHistory(event, ${i})">×</div>
             </div>`).join('') || "履歴はありません";
     }
-    function renderRanking() {
-  const list = document.getElementById("rankingList");
+   function renderRanking() {
+   const list = document.getElementById("ranking-list");
 
-  // ▼ ここでデータ取得
-  let data = JSON.parse(localStorage.getItem("ranking") || "[]");
+    let data = JSON.parse(localStorage.getItem("stRanking")) || [];
 
-  // 🔧 表示時にフィルター（←ここ！！！）
-  data = data.filter(item => item.name && item.time);
+    // expでソート
+    data.sort((a, b) => b.exp - a.exp);
 
-  // ▼ ソート
-  data.sort((a, b) => b.time - a.time);
-
-  // ▼ 表示
-  list.innerHTML = "";
-  data.forEach((item, i) => {
-    list.innerHTML += `
-      <li>${i + 1}位：${item.name} - ${item.time}分</li>
-    `;
-  });
+    list.innerHTML = data.map((item, i) => `
+    <div style="padding:5px; border-bottom:1px solid #333;">
+        🏆 ${i + 1}位：${item.name}<br>
+        <span style="color:var(--sub);">${Math.floor(item.exp)}分</span>
+    </div>
+`).join('');
 }
     function deleteHistory(e, i) { e.stopPropagation(); let h = JSON.parse(localStorage.getItem('arHistory')); h.splice(i, 1); localStorage.setItem('arHistory', JSON.stringify(h)); renderHistory(); }
     function applyHistory(task, sec, color) { document.getElementById('settings-modal').style.display = 'none'; currentTaskObj = { name: task, color: color, shared: false }; selectedSeconds = sec; remainingTime = sec; isHistoryRecorded = true; document.documentElement.style.setProperty('--timer-color', color); document.getElementById('result-text').innerHTML = `<span style="font-size:0.8rem; opacity:0.6;">履歴から復元</span><br>⭐ ${currentTaskObj.name} ⭐`; let label = sec < 60 ? sec+"秒" : (sec < 3600 ? (sec/60)+"分" : (sec/3600)+"時間"); document.getElementById('selected-time-display').innerText = `設定時間: ${label}`; updateTimerDisplay(); document.getElementById('timer-section').style.display = 'block'; }
@@ -1060,13 +1162,33 @@ function loadTemplate(name) {
     window.selectCrown = function(i) {
     crowns.selected = i;
     localStorage.setItem('stCrowns', JSON.stringify(crowns));
-    location.reload();
-        
-}
+
+    updateCrownDisplay();     // ←追加
+    updateStatusCrown();      // ←追加
+};
         
         let h = Math.floor(totalExp / 60);
         let m = Math.floor(totalExp % 60);
         document.getElementById('status-total-time').innerText = `${h}時間${m}分`;
+        // 教科別の時間表示を生成
+        let subjectTimes = JSON.parse(localStorage.getItem('stSubjectTimes')) || {};
+        let subjectListHtml = Object.keys(subjectTimes).map(name => {
+            let totalMin = subjectTimes[name];
+            let h = Math.floor(totalMin / 60);
+            let m = Math.floor(totalMin % 60);
+            return `<div style="display:flex; justify-content:space-between; margin-bottom:4px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <span>${name}</span>
+                        <strong>${h}時間${m}分</strong>
+                    </div>`;
+        }).join('') || '<p style="color:#888;">まだ記録がありません</p>';
+
+        // 実績セクションに注入
+        document.getElementById('status-perks').innerHTML = `
+            <div style="margin-top:10px; padding:10px; background:rgba(0,0,0,0.2); border-radius:8px;">
+                <h4 style="margin:0 0 8px 0; color:var(--sub); font-size:0.9rem;">📚 教科別累計時間</h4>
+                ${subjectListHtml}
+            </div>
+        `;
         
         let title = "";
         crownClass = "";
@@ -1135,14 +1257,14 @@ if (savedIcon) {
     function setHeaderImage(file) {
     const reader = new FileReader();
     reader.onload = function(e) {
-        localStorage.setItem('stHeaderImage', e.target.result);
-        renderHeaderImage();
+        localStorage.setItem('userIcon', e.target.result);
+        renderUserIcon();
     };
     reader.readAsDataURL(file);
 }
 
 function renderUserIcon() {
-    const imgData = localStorage.getItem('stHeaderImage');
+    const imgData = localStorage.getItem('userIcon');
     const img = document.getElementById('user-icon');
     const def = document.getElementById('default-user-icon');
 
